@@ -45,13 +45,13 @@ jobs:
             <packageSourceCredentials>
               <github>
                 <add key="Username" value="Reshala5739" />
-                <add key="ClearTextPassword" value="$GITHUB_TOKEN" />
+                <add key="ClearTextPassword" value="$GH_PACKAGES_PAT" />
               </github>
             </packageSourceCredentials>
           </configuration>
           EOF
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PACKAGES_PAT: ${{ secrets.GH_PACKAGES_PAT }}
 
       - name: Publish Todo.Core to GitHub Packages
         run: |

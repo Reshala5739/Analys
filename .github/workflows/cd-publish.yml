@@ -25,18 +25,28 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
+      - name: Find Todo.Core project
+        id: find_proj
+        run: |
+          PROJECT=$(find src/Todo.Core -maxdepth 1 -name "*.csproj" | head -n 1)
+          if [ -z "$PROJECT" ]; then
+            echo "ERROR: Todo.Core csproj not found!"
+            exit 1
+          fi
+          echo "PROJECT_PATH=$PROJECT" >> $GITHUB_ENV
+          echo "Found project: $PROJECT"
+
       - name: Restore dependencies
-        run: dotnet restore src/Todo.Core/Todo.Core.csproj
+        run: dotnet restore $PROJECT_PATH
 
       - name: Build Todo.Core
-        run: dotnet build src/Todo.Core/Todo.Core.csproj -c Release --no-restore
+        run: dotnet build $PROJECT_PATH -c Release --no-restore
 
-      - name: Pack Todo.Core
+      - name: Pack Todo.Core with dynamic version
         run: |
-          dotnet pack src/Todo.Core/Todo.Core.csproj \
-            -c Release \
-            -o ./artifacts \
-            /p:PackageVersion=1.0.${{ github.run_number }}
+          VERSION="1.0.${{ github.run_number }}"
+          echo "Packing version $VERSION"
+          dotnet pack $PROJECT_PATH -c Release -o ./artifacts /p:PackageVersion=$VERSION
 
       - name: Setup NuGet authentication
         run: |

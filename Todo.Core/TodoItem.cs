@@ -1,4 +1,10 @@
-﻿namespace Todo.Core
+﻿// -------------------------------------------------------------------
+// <copyright file="TodoItem.cs" company="NATK">
+// Copyright (c) NATK. All rights reverved.
+// </copyright>
+// -------------------------------------------------------------------
+
+namespace Todo.Core
 {
     public class TodoItem
     {

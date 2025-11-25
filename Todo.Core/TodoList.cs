@@ -1,4 +1,10 @@
-﻿using System;
+﻿// -------------------------------------------------------------------
+// <copyright file="TodoList.cs" company="NATK">
+// Copyright (c) NATK. All rights reverved.
+// </copyright>
+// -------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

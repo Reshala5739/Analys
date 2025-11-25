@@ -19,6 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6B95ABC9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Core.Tests", "Todo.Core.Tests\Todo.Core.Tests.csproj", "{71DA526B-F6ED-455C-85BC-7BAD0203CA24}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{BDCF739A-E76C-4426-94DD-5D0C7BEEEE5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{BC1F875B-FF6B-4CCF-9717-F29386B34079}"
+	ProjectSection(SolutionItems) = preProject
+		ci-analysis.yml = ci-analysis.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +52,7 @@ Global
 		{31C278E9-7F22-4E7D-AC99-677901FCB3BC} = {475F856D-DEE2-445B-B194-7D24B70D868C}
 		{2A7F340F-2097-4E23-8EEF-5344015BA3AA} = {475F856D-DEE2-445B-B194-7D24B70D868C}
 		{71DA526B-F6ED-455C-85BC-7BAD0203CA24} = {6B95ABC9-4E76-4A04-BC69-794A75C0575F}
+		{BC1F875B-FF6B-4CCF-9717-F29386B34079} = {BDCF739A-E76C-4426-94DD-5D0C7BEEEE5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {556DEA24-B044-4487-85A9-C3067551285F}

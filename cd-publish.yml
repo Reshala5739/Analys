@@ -7,6 +7,7 @@ on:
 jobs:
   pack-and-publish:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dotnet nuget push ./artifacts/*.nupkg \
-            --source "github" \
+            --source "https://nuget.pkg.github.com/Reshala5739/index.json" \
             --api-key $GITHUB_TOKEN \
             --skip-duplicate
 

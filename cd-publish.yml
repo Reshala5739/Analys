@@ -26,14 +26,14 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore src/Todo.Core/Todo.Core.csproj
 
       - name: Build Todo.Core
-        run: dotnet build Todo.Core/Todo.Core.csproj -c Release --no-restore
+        run: dotnet build src/Todo.Core/Todo.Core.csproj -c Release --no-restore
 
       - name: Pack Todo.Core
         run: |
-          dotnet pack Todo.Core/Todo.Core.csproj \
+          dotnet pack src/Todo.Core/Todo.Core.csproj \
             -c Release \
             -o ./artifacts \
             /p:PackageVersion=1.0.${{ github.run_number }}

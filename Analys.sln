@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{BDCF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{BC1F875B-FF6B-4CCF-9717-F29386B34079}"
 	ProjectSection(SolutionItems) = preProject
+		cd-publish.yml = cd-publish.yml
 		ci-analysis.yml = ci-analysis.yml
 	EndProjectSection
 EndProject

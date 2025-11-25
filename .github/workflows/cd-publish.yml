@@ -1,0 +1,46 @@
+name: CD / Pack & Publish Todo.Core
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  pack-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build Todo.Core
+        run: dotnet build Todo.Core/Todo.Core.csproj -c Release --no-restore
+
+      - name: Pack Todo.Core
+        run: dotnet pack Todo.Core/Todo.Core.csproj -c Release -o ./artifacts
+
+      - name: Publish Todo.Core to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dotnet nuget push ./artifacts/*.nupkg \
+            --source "github" \
+            --api-key $GITHUB_TOKEN \
+            --skip-duplicate
+
+      - name: List artifacts
+        run: ls -la ./artifacts
